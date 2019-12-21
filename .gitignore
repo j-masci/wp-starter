@@ -1,0 +1,19 @@
+# ignore files/dirs in this dir
+/*
+
+# except
+!.gitignore
+!README.md
+!package.json
+!composer.json
+
+# include the theme
+!wp-content/
+wp-content/*
+!wp-content/themes
+wp-content/themes/*
+!wp-content/themes/wp-starter
+
+# ignore some extensions (todo: add more)
+*.log
+*.sql
