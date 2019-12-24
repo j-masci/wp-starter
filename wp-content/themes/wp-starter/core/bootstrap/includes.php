@@ -14,3 +14,5 @@ if( file_exists( ABSPATH . '/vendor/autoload.php' ) ) {
 require JM_THEME_DIR . '/wp-helpers/_autoload.php';
 
 require JM_CORE_DIR . '/modules/ajax.php';
+
+require JM_CORE_DIR . '/entities/contact-form-record.php';
