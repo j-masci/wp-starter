@@ -1,0 +1,12 @@
+{
+    "name": "joel-masci/wp-starter",
+    "authors": [
+        {
+            "name": "Joel Masci",
+            "email": "masci.joel@gmail.com"
+        }
+    ],
+    "require": {
+        "stoutlogic/acf-builder": "^1.8"
+    }
+}

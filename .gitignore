@@ -17,3 +17,4 @@ wp-content/themes/*
 # ignore some extensions (todo: add more)
 *.log
 *.sql
+/vendor/
