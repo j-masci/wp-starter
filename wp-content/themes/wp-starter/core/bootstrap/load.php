@@ -2,52 +2,94 @@
 /**
  * Bootstrap the theme.
  *
- * 3 main things to do:
+ * I will split the logic up into 3 main portions.
  *
- * 1. include the files that do config (ie. define constants)
- * 2. include the files that load dependencies (ie. define classes, functions, or auto loaders)
- * 3. include the files that initialize WordPress (ie. post types, nav menu's, hooks/filters, etc.)
+ * 1. include the files that do "config" (ie. define constants, or configure classes)
+ * 2. include the files that load dependencies ("include" other files) (ie. define classes, functions, etc.)
+ * 3. include the files that "setup" (or initialize) WordPress (ie. register post types, user roles, admin columns etc.). These
+ * likely depend on #1 and #2.
+ *
+ * In order to solve timing issues, we will hook nearly everything onto one of 3 actions: 'theme_setup_config',
+ * 'theme_setup_includes', or 'theme_setup_late'.
+ *
+ * This way, keep config in a config file, and include the config file early. If the config file requires
+ * something that's not yet loaded, hook it onto 'theme_setup_late'.
+ *
+ * todo: probably can do this with less than 3 hooks and in a more simple way.
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+// need this one very early
 define( 'JM_CORE_DIR', dirname( __DIR__ ) );
 
-// require the environment specific config file (in WP root)
+/**
+ * Include files which define classes and functions which the theme depends on.
+ *
+ * For now, we don't need a separate file for this.
+ */
+add_action( 'theme_setup_includes', function(){
+
+    if( file_exists( ABSPATH . '/vendor/autoload.php' ) ) {
+        require_once ABSPATH . '/vendor/autoload.php';
+    }
+
+    // load the helpers sub module
+    include JM_THEME_DIR . '/wp-helpers/_autoload.php';
+
+    // other theme files...
+    include JM_CORE_DIR . '/modules/ajax.php';
+    include JM_CORE_DIR . '/entities/contact-form-record.php';
+}, 10 );
+
+/**
+ * Include the auto-includes (automatically) on 'theme_setup_late'.
+ *
+ * Despite the name ("include"), these files should "setup" WordPress. Ie.
+ * register post types, user roles, taxonomies, etc. Not class or function
+ * definitions.
+ */
+add_action( 'theme_setup_late', function(){
+    array_map( function( $path ){
+        require_once $path;
+    }, glob(JM_CORE_DIR . '/auto-include/*.php') );
+
+}, 10 );
+
+/**
+ * Include the environment specific (git ignored) config file which can
+ * optionally define some constants.
+ */
 if ( file_exists( $theme_env_config = ABSPATH . '/_theme-env-config.php' ) ) {
     require $theme_env_config;
+} else if ( ! is_admin() ){
+    throw new Exception( "Theme environment config file must exist even if empty." );
 } else {
-
-    // fail on the front-end only, allowing de-activation of mis-configured theme from wp-admin.
-    if ( ! is_admin() ) {
-        throw new Exception( "Theme environment config file must exist even if empty." );
-    }
+    // if we get to here, it means we're in wp-admin, where we must fail silently so
+    // that we do not interfere with the theme being de-activated.
 }
 
-// config
+/**
+ * Include the other files which should add actions.
+ */
 require __DIR__ . '/config-global.php';
-
-// dependencies
-require __DIR__ . '/includes.php';
-
-// in the config file, we may need this if we need to modify a class that's not included yet.
-do_action( 'jm_after_includes' );
-
-// auto include all files in a directory.
-// the intended purpose is to only put setup related tasks in here.
-// not at all intended for function or class definitions.
-// this makes it very convenient to break things into small tasks, without having to
-// manually include new files each time. It should be easy to find what you are looking
-// for just by reading the filenames.
-// todo: if include order needs to be explicit, then how much does this even help?
-// todo: can this have a better name (sounds similar to includes.php but is meant for "setup")
-array_map( function( $path ){
-    include $path;
-}, glob(JM_CORE_DIR . '/auto-include/*.php') );
-
-do_action( 'jm_after_includes' );
-
-// todo: is setup a good name for this?
 require __DIR__ . '/setup.php';
 
-do_action( 'jm_after_setup' );
+/**
+ * Define constants mostly.
+ */
+do_action( 'theme_setup_config' );
+
+/**
+ * Load class and function definitions.
+ */
+do_action( 'theme_setup_includes' );
+
+/**
+ * Initialize WordPress
+ */
+do_action( 'theme_setup_late' );
+
+/**
+ * Note that 'after_theme_setup' and 'init' hooks still run after all of the above.
+ */

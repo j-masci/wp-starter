@@ -8,13 +8,30 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-// contact form callback
-jm_ajax_config()->register( "contact_form", "nonce-seed-237123", function(){
-    include JM_AJAX_DIR . '/contact-form.php';
-});
+// run this all quite late...
+add_action( 'after_theme_setup', function(){
 
-// do this part late, in case files other than this one register their own handlers.
-add_action( 'jm_after_setup', function(){
+    /**
+     * The function exists for easier access.
+     *
+     * Define the function here since it creates and configured the global instance.
+     *
+     * @return mixed
+     */
+    function jm_ajax_config(){
+        global $_ajaxConfig;
+
+        if ( ! $_ajaxConfig ){
+            $_ajaxConfig = new \JM\Ajax_Config( "global_ajax", "_sub_action", "_nonce" );
+        }
+
+        return $_ajaxConfig;
+    }
+
+    // contact form callback
+    jm_ajax_config()->register( "contact_form", "nonce-seed-237123", function(){
+        include JM_AJAX_DIR . '/contact-form.php';
+    });
 
     // register the global ajax callback, which all individual handlers run through.
     jm_ajax_config()->commit( function( $ajax ){
@@ -33,4 +50,8 @@ add_action( 'jm_after_setup', function(){
         // invoke the individual handler
         call_user_func_array( $handler['callback'], [] );
     });
-}, 1000 );
+});
+
+
+
+
