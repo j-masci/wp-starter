@@ -39,6 +39,5 @@ add_action( 'after_theme_setup', function(){
         const SUPPORT_FEATURED_IMAGES = true;
     }
 
-    \JM\Theme_Settings::commit( new Theme_Settings() );
-
+    Theme_Settings::commit();
 });
