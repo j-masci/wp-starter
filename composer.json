@@ -6,7 +6,19 @@
             "email": "masci.joel@gmail.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/j-masci/wp-utils"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/j-masci/utils"
+        }
+    ],
     "require": {
+        "jmasci/utils" : "dev-master",
+        "jmasci/wp-utils" : "dev-master",
         "stoutlogic/acf-builder": "^1.8",
         "phpunit/phpunit": "8"
     },

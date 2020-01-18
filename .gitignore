@@ -6,6 +6,7 @@
 !README.md
 !package.json
 !composer.json
+!composer.lock
 
 # include the theme
 !wp-content/
