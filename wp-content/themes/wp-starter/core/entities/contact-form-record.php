@@ -5,7 +5,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-Class JM_Contact_Form_Record extends \JM\Post_Type_Superclass{
+Class JM_Contact_Form_Record extends \JMasci\WP\Post_Type_Static_Methods {
 
     const POST_TYPE = "contact_form_submit";
 
@@ -14,7 +14,7 @@ Class JM_Contact_Form_Record extends \JM\Post_Type_Superclass{
      */
     public static function init(){
 
-        // we could do this here, but, really depends on the context.
+        // in some cases we can register the post type here
         // register_post_type( static::POST_TYPE, []);
 
         self::$meta_keys = new JM_Contact_Form_Record_Meta_Keys();
@@ -29,12 +29,11 @@ Class JM_Contact_Form_Record extends \JM\Post_Type_Superclass{
      * @return mixed
      */
     public function get_ip( $post_id ){
-        return self::meta( $post_id, self::$meta_keys->ip );
+        return self::get_meta( $post_id, self::$meta_keys->ip );
     }
 }
 
-// example of how to define meta keys...
-// probably, you would have a few more than what's below.
+// meta keys struct
 Class JM_Contact_Form_Record_Meta_Keys{
     public $name = "_name";
     public $email = "_email";
@@ -42,6 +41,5 @@ Class JM_Contact_Form_Record_Meta_Keys{
     public $ip = "_ip";
 }
 
-// so long as init doesn't require special dependencies, we could do this here, although,
-// bad practice to do it here in some cases.
+// init right away since we can (no undefined deps)
 JM_Contact_Form_Record::init();

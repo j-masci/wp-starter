@@ -3,13 +3,11 @@
  * add columns to wp-admin edit.php
  */
 
-use JM\Admin_Columns;
+use JMasci\WP\Admin_Columns;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 Admin_Columns::insert( [ 'page' ], "_page_template", "Page Template", function( $post_id ) {
-
-
 
 }, 1 );
 

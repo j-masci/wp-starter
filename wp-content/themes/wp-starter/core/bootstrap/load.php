@@ -34,9 +34,6 @@ add_action( 'theme_setup_includes', function(){
         require_once ABSPATH . '/vendor/autoload.php';
     }
 
-    // load the helpers sub module
-    include JM_THEME_DIR . '/wp-helpers/_autoload.php';
-
     // other theme files...
     include JM_CORE_DIR . '/modules/ajax.php';
     include JM_CORE_DIR . '/entities/contact-form-record.php';

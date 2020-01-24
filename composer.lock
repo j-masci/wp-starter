@@ -135,22 +135,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/j-masci/utils.git",
-                "reference": "74d112b8e6533225e05bebfccba009c79d99999a"
+                "reference": "e4d40d8dceb77fa73724b2d0636e8819f4e59812"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/j-masci/utils/zipball/74d112b8e6533225e05bebfccba009c79d99999a",
-                "reference": "74d112b8e6533225e05bebfccba009c79d99999a",
+                "url": "https://api.github.com/repos/j-masci/utils/zipball/e4d40d8dceb77fa73724b2d0636e8819f4e59812",
+                "reference": "e4d40d8dceb77fa73724b2d0636e8819f4e59812",
                 "shasum": ""
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "JMasci\\": "src/"
-                },
-                "files": [
-                    "src/utils.php"
-                ]
+                }
             },
             "authors": [
                 {
@@ -163,7 +160,7 @@
                 "source": "https://github.com/j-masci/utils/tree/master",
                 "issues": "https://github.com/j-masci/utils/issues"
             },
-            "time": "2020-01-18T23:13:30+00:00"
+            "time": "2020-01-19T23:08:37+00:00"
         },
         {
             "name": "jmasci/wp-utils",
@@ -171,12 +168,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/j-masci/wp-utils.git",
-                "reference": "c0437d0a033c653d6f3cba6545294b344854658a"
+                "reference": "63dc9764b95ab69f09db278a13f5591ebc00554c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/j-masci/wp-utils/zipball/c0437d0a033c653d6f3cba6545294b344854658a",
-                "reference": "c0437d0a033c653d6f3cba6545294b344854658a",
+                "url": "https://api.github.com/repos/j-masci/wp-utils/zipball/63dc9764b95ab69f09db278a13f5591ebc00554c",
+                "reference": "63dc9764b95ab69f09db278a13f5591ebc00554c",
                 "shasum": ""
             },
             "require": {
@@ -186,10 +183,7 @@
             "autoload": {
                 "psr-4": {
                     "JMasci\\WP\\": "src/"
-                },
-                "files": [
-                    "src/wp-utils.php"
-                ]
+                }
             },
             "authors": [
                 {
@@ -202,7 +196,7 @@
                 "source": "https://github.com/j-masci/wp-utils/tree/master",
                 "issues": "https://github.com/j-masci/wp-utils/issues"
             },
-            "time": "2020-01-18T23:13:14+00:00"
+            "time": "2020-01-19T23:08:20+00:00"
         },
         {
             "name": "myclabs/deep-copy",
