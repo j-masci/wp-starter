@@ -5,7 +5,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-add_action( 'enqueue_scripts', function(){
+add_action( 'wp_enqueue_scripts', function(){
 
     wp_enqueue_style( 'theme_css', JM_CSS_URL . '/master.css', [], JM_ASSETS_VERSION );
 
