@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "826f439b9a6d10532eab40972104c900",
+    "content-hash": "66c362d72b9f4d01c490663be89d2d8a",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -130,17 +130,17 @@
             "time": "2019-10-21T16:45:58+00:00"
         },
         {
-            "name": "jmasci/utils",
+            "name": "jmasci/php-utils",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/j-masci/utils.git",
-                "reference": "e4d40d8dceb77fa73724b2d0636e8819f4e59812"
+                "url": "https://github.com/j-masci/php-utils.git",
+                "reference": "511bc370da39c404a8577547070abd5dd1b98a2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/j-masci/utils/zipball/e4d40d8dceb77fa73724b2d0636e8819f4e59812",
-                "reference": "e4d40d8dceb77fa73724b2d0636e8819f4e59812",
+                "url": "https://api.github.com/repos/j-masci/php-utils/zipball/511bc370da39c404a8577547070abd5dd1b98a2d",
+                "reference": "511bc370da39c404a8577547070abd5dd1b98a2d",
                 "shasum": ""
             },
             "type": "library",
@@ -149,18 +149,15 @@
                     "JMasci\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Joel Home",
                     "email": "masci.joel@gmail.com"
                 }
             ],
-            "description": "Small library with basic PHP utilities",
-            "support": {
-                "source": "https://github.com/j-masci/utils/tree/master",
-                "issues": "https://github.com/j-masci/utils/issues"
-            },
-            "time": "2020-01-19T23:08:37+00:00"
+            "description": "generic PHP utilities/helpers",
+            "time": "2020-01-24T19:18:32+00:00"
         },
         {
             "name": "jmasci/wp-utils",
@@ -168,16 +165,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/j-masci/wp-utils.git",
-                "reference": "63dc9764b95ab69f09db278a13f5591ebc00554c"
+                "reference": "2a9cc413d6e033c8b59f02ff8697b7663d5ef805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/j-masci/wp-utils/zipball/63dc9764b95ab69f09db278a13f5591ebc00554c",
-                "reference": "63dc9764b95ab69f09db278a13f5591ebc00554c",
+                "url": "https://api.github.com/repos/j-masci/wp-utils/zipball/2a9cc413d6e033c8b59f02ff8697b7663d5ef805",
+                "reference": "2a9cc413d6e033c8b59f02ff8697b7663d5ef805",
                 "shasum": ""
-            },
-            "require": {
-                "jmasci/utils": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -185,18 +179,15 @@
                     "JMasci\\WP\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Joel Masci",
                     "email": "masci.joel@gmail.com"
                 }
             ],
-            "description": "A collection of WordPress utilities geared towards custom theme developement",
-            "support": {
-                "source": "https://github.com/j-masci/wp-utils/tree/master",
-                "issues": "https://github.com/j-masci/wp-utils/issues"
-            },
-            "time": "2020-01-19T23:08:20+00:00"
+            "description": "Utilities/helpers geared towards WordPress custom themes",
+            "time": "2020-02-26T20:11:38+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1659,11 +1650,13 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "jmasci/utils": 20,
-        "jmasci/wp-utils": 20
+        "jmasci/wp-utils": 20,
+        "jmasci/php-utils": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-json": "*"
+    },
     "platform-dev": []
 }

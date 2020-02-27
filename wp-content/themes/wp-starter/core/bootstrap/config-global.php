@@ -34,7 +34,7 @@ add_action( 'theme_setup_config', function(){
  */
 add_action( 'after_theme_setup', function(){
 
-    Class Theme_Settings extends \JM\Theme_Settings {
+    Class Theme_Settings extends \JMasci\WP\Theme_Settings {
         const HIDE_ADMIN_BAR = true;
         const SUPPORT_FEATURED_IMAGES = true;
     }
